@@ -87,13 +87,18 @@ class GridViewController: UIViewController {
 
 extension GridViewController: UIScrollViewDelegate{
     
+   
+    
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
         self.checkAndLoadMoreData(scrollView)
     }
     
     func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
-        self.checkAndLoadMoreData(scrollView)
+        if(!decelerate){
+            self.checkAndLoadMoreData(scrollView)
+        }
     }
+   
 }
 
 extension GridViewController: UICollectionViewDataSource, UICollectionViewDelegate {
