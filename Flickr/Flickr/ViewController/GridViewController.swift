@@ -64,6 +64,10 @@ class GridViewController: UIViewController {
         }, completion: nil)
     }
     
+    /*
+    checkAndLoadMoreData - This is called on dragging the collection view bottom to up direction
+    for loading next page.
+    */
     func checkAndLoadMoreData(_ scrollView: UIScrollView) {
         let endScrolling = (scrollView.contentOffset.y + scrollView.frame.size.height)
         if endScrolling >= scrollView.contentSize.height {
@@ -86,8 +90,6 @@ class GridViewController: UIViewController {
 }
 
 extension GridViewController: UIScrollViewDelegate{
-    
-   
     
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
         self.checkAndLoadMoreData(scrollView)
@@ -148,7 +150,6 @@ extension GridViewController:UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
         let edgeInset = UIEdgeInsets(top:0, left:interitemSpacing,bottom:0, right: interitemSpacing)
-        
         return edgeInset
     }
     
